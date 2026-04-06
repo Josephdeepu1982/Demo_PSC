@@ -3,11 +3,11 @@
 ## Phase 0: Working Agreement
 - [x] Add initial project rules for form validation, git and branching, and code style under `.cursor/rules/`.
 - [x] Update `README.md` to reflect the current documentation-first project state and active rules.
-- [ ] Confirm the source of truth files from the Ruby app and attach them to implementation notes.
-- [ ] Confirm the target React toolchain for the initial scaffold.
-- [ ] Confirm where environment configuration will live for local development and deployment.
-- [ ] Create a short `docs/prd/implementation-assumptions.md` file listing open decisions, constraints, and known risks.
-- [ ] Add a standing security note to the implementation docs explaining that direct browser-to-Airtable is an explicit project constraint with tradeoffs.
+- [x] Confirm the source of truth files from the Ruby app and attach them to implementation notes.
+- [x] Confirm the target React toolchain for the initial scaffold.
+- [x] Confirm where environment configuration will live for local development and deployment.
+- [x] Create a short `Docs/prd/implementation-assumptions.md` file listing open decisions, constraints, and known risks.
+- [x] Add a standing security note to the implementation docs explaining that direct browser-to-Airtable is an explicit project constraint with tradeoffs.
 
 ## Phase 1: Project Initialization
 - [ ] Create the React project scaffold.
