@@ -1,34 +1,41 @@
 # UI Parity Notes
 
-## Phase 2 Mock UI
+## Phase 11 Review
 
-This note tracks how the current React mock UI compares with the Ruby form baseline during the static shell phase.
+This note tracks the current React UI against the Ruby source-of-truth files and the attached screenshot reference.
 
-## Matched In The Mock UI
+Reviewed against:
 
-- Card-based container on a light page background
-- Page title: `Service Application Form`
-- Subtitle: `Please fill in the details below to submit your service request.`
-- Field order matches the Ruby form
-- Labels and placeholders match the current source-of-truth fields
-- Service type select includes the current three options
-- Remarks field includes an optional/max-length note and a visible character counter
-- Primary submit button is present at the bottom of the form
+- `/Users/Joseph/Desktop/PSC Demo/ruby-app/views/form.erb`
+- `/Users/Joseph/Desktop/PSC Demo/ruby-app/views/success.erb`
+- `/Users/Joseph/Desktop/PSC Demo/ruby-app/public/js/validation.js`
+- attached Ruby screenshot referenced in `Docs/prd/project-requirements.md`
 
-## Intentional Differences In This Phase
+## Confirmed Matches
 
-- Inputs are static and have no validation, touched-state logic, or submission behavior yet
-- The submit button is visually disabled to reflect the intended future behavior
-- The preferred date field currently uses a text placeholder to preserve the mock layout before real field behavior is added
-- Inline validation errors from the Ruby screenshot are not rendered in this static shell phase
+- The form uses the same title and subtitle copy as the Ruby card.
+- Field order matches the Ruby implementation.
+- Labels, required markers, placeholders, and service type options match the Ruby form source.
+- `Remarks` remains optional, keeps the max-length note, and shows a live character counter.
+- The submit button stays disabled until the form becomes valid.
+- Validation timing matches the Ruby client-side model: blur marks a field touched, touched fields re-validate on later input or change, and submit reveals all current errors.
+- Inline validation messages use the same wording captured from the Ruby validation rules.
+- The success view keeps the same core confirmation copy, summary content, and `Submit Another Application` action as the Ruby success page.
 
-## Visual Notes
+## Intentional Differences
 
-- The mock card width, spacing, heading scale, and form spacing were tuned to resemble the Ruby screenshot closely without introducing form logic yet
-- Browser-native control styling may still vary slightly by platform, especially for select and date-like fields
+- The React app keeps the success state in the same SPA tree instead of navigating to a separate server-rendered success page.
+- The success summary uses a semantic description list instead of the Ruby summary table, while preserving the same visible content and order.
+- Native browser styling for the date input and select can still vary slightly by platform compared with the Ruby screenshot.
+- The frontend-only React implementation does not preserve the Ruby server's local fallback submission behavior when Airtable fails.
 
-## Next Parity Focus
+## Changes Made During This Review
 
-- Add real form state while preserving the current layout
-- Introduce validation timing and error placement to match the Ruby implementation
-- Revisit the preferred date field behavior when interactive validation is added
+- Removed the visible development-only preview panel because it was not part of the Ruby form experience.
+- Moved the form title and subtitle into the form view so the success state now replaces the card body more closely, like the Ruby success page.
+- Re-verified the current labels, placeholders, required markers, validation timing, and success-state structure against the Ruby source files.
+
+## Security Review
+
+- No debugging helpers, console logging, or developer-only preview UI remain in the production form path after this parity pass.
+- No additional developer tooling is exposed in the rendered UI beyond the existing app behavior.
