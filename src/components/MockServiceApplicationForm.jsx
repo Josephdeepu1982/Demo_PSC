@@ -2,12 +2,16 @@ import { useMemo, useRef, useState } from 'react'
 import MockSubmissionSuccess from './MockSubmissionSuccess.jsx'
 import { serviceTypeOptions } from '../constants/serviceTypeOptions.js'
 import { remarksMaxLength } from '../constants/validationRules.js'
-import { mockSubmitApplication } from '../submission/mockSubmission.js'
+import { submitToAirtable } from '../submission/airtableSubmission.js'
+import { buildSubmission } from '../submission/submissionData.js'
 import {
   formFieldNames,
   initialFormValues,
   validateForm,
 } from '../validation/formValidation.js'
+
+const submissionFailureMessage =
+  "We couldn't submit your application right now. Please try again."
 
 function createTouchedState(isTouched = false) {
   return formFieldNames.reduce((touchedState, fieldName) => {
@@ -21,6 +25,7 @@ function MockServiceApplicationForm() {
   const [touchedFields, setTouchedFields] = useState(createTouchedState)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submittedValues, setSubmittedValues] = useState(null)
+  const [submissionError, setSubmissionError] = useState('')
   const fieldRefs = useRef({})
 
   const validationErrors = useMemo(() => validateForm(formValues), [formValues])
@@ -55,6 +60,10 @@ function MockServiceApplicationForm() {
   const handleFieldChange = (event) => {
     const { name, value } = event.target
 
+    if (submissionError) {
+      setSubmissionError('')
+    }
+
     setFormValues((currentValues) => ({
       ...currentValues,
       [name]: value,
@@ -68,7 +77,12 @@ function MockServiceApplicationForm() {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    if (isSubmitting) {
+      return
+    }
+
     setTouchedFields(createTouchedState(true))
+    setSubmissionError('')
     const nextErrors = validateForm(formValues)
     const firstInvalidFieldName = formFieldNames.find(
       (fieldName) => nextErrors[fieldName],
@@ -82,8 +96,13 @@ function MockServiceApplicationForm() {
     setIsSubmitting(true)
 
     try {
-      const mockSubmission = await mockSubmitApplication(formValues)
-      setSubmittedValues(mockSubmission)
+      const submission = buildSubmission(formValues)
+      await submitToAirtable(formValues, {
+        submittedAt: submission.submittedAt,
+      })
+      setSubmittedValues(submission)
+    } catch {
+      setSubmissionError(submissionFailureMessage)
     } finally {
       setIsSubmitting(false)
     }
@@ -94,6 +113,7 @@ function MockServiceApplicationForm() {
     setTouchedFields(createTouchedState())
     setSubmittedValues(null)
     setIsSubmitting(false)
+    setSubmissionError('')
   }
 
   const previewItems = [
@@ -293,13 +313,18 @@ function MockServiceApplicationForm() {
         >
           {isSubmitting ? 'Submitting...' : 'Submit Application'}
         </button>
+        {submissionError ? (
+          <div className="submissionErrorMessage" role="alert">
+            {submissionError}
+          </div>
+        ) : null}
       </form>
 
       <aside className="previewPanel" aria-label="Mock form preview">
         <h2 className="previewTitle">Preview</h2>
         <p className="previewDescription">
-          Local state only. This preview is for development and does not submit
-          data anywhere.
+          This preview mirrors the current form state before submission and is
+          shown for development visibility.
         </p>
         <dl className="previewList">
           {previewItems.map((item) => (

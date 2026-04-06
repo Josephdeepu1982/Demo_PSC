@@ -122,19 +122,19 @@
   - [x] confirm the project acknowledges browser exposure risk
 
 ## Phase 8: Real Submission
-- [ ] Replace the mock submit handler with the real Airtable submission flow.
-- [ ] Submit the correct mapped fields to Airtable.
-- [ ] Handle successful submission.
-- [ ] Handle failed submission gracefully.
-- [ ] Decide whether to preserve or drop the Ruby fallback behavior in the frontend-only implementation.
-- [ ] Show user-safe messaging when submission fails.
-- [ ] Prevent duplicate submissions while a request is in flight.
-- [ ] Update `docs/form-behavior.md` with the final submission flow.
-- [ ] Update `docs/business-rules.md` if any implementation constraint changes are discovered.
-- [ ] Perform a security review:
-  - [ ] confirm no sensitive request details are rendered to the user
-  - [ ] confirm failures are handled without exposing internal tokens or raw API responses
-  - [ ] confirm duplicate-submission risk is reduced
+- [x] Replace the mock submit handler with the real Airtable submission flow.
+- [x] Submit the correct mapped fields to Airtable.
+- [x] Handle successful submission.
+- [x] Handle failed submission gracefully.
+- [x] Decide whether to preserve or drop the Ruby fallback behavior in the frontend-only implementation.
+- [x] Show user-safe messaging when submission fails.
+- [x] Prevent duplicate submissions while a request is in flight.
+- [x] Update `docs/form-behavior.md` with the final submission flow.
+- [x] Update `docs/business-rules.md` if any implementation constraint changes are discovered.
+- [x] Perform a security review:
+  - [x] confirm no sensitive request details are rendered to the user
+  - [x] confirm failures are handled without exposing internal tokens or raw API responses
+  - [x] confirm duplicate-submission risk is reduced
 
 ## Phase 9: Unit Tests
 - [ ] Add unit tests for validation helpers.

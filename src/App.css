@@ -253,6 +253,17 @@
   transform: translateY(-1px);
 }
 
+.submissionErrorMessage {
+  margin-top: 0.25rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid #f1c6c6;
+  border-radius: 0.75rem;
+  background: #fff6f6;
+  color: #a33636;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .secondaryButton {
   justify-self: start;
   padding: 0.95rem 1.25rem;

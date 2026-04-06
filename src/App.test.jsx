@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   fireEvent,
   render,
@@ -8,6 +8,20 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App.jsx'
+import { submitToAirtable } from './submission/airtableSubmission.js'
+
+vi.mock('./submission/airtableSubmission.js', () => ({
+  submitToAirtable: vi.fn(),
+}))
+
+beforeEach(() => {
+  vi.clearAllMocks()
+  submitToAirtable.mockResolvedValue({
+    recordId: 'rec123',
+    createdTime: '2026-04-06T14:00:00.000Z',
+    fields: {},
+  })
+})
 
 describe('App', () => {
   it('binds form inputs to local state, updates the preview, and enables submit once valid', async () => {
@@ -42,7 +56,9 @@ describe('App', () => {
     expect(screen.getByText('19 / 300')).toBeInTheDocument()
     expect(submitButton).toBeEnabled()
     expect(
-      screen.getByText('Local state only. This preview is for development and does not submit data anywhere.'),
+      screen.getByText(
+        'This preview mirrors the current form state before submission and is shown for development visibility.',
+      ),
     ).toBeInTheDocument()
     expect(
       within(screen.getByLabelText(/mock form preview/i)).getByText(
@@ -114,7 +130,7 @@ describe('App', () => {
 
     await user.click(screen.getByRole('button', { name: /submit application/i }))
 
-    expect(screen.getByRole('button', { name: /submitting/i })).toBeDisabled()
+    expect(submitToAirtable).toHaveBeenCalledTimes(1)
 
     expect(
       await screen.findByRole('heading', { name: /application submitted/i }),
@@ -163,5 +179,85 @@ describe('App', () => {
     ).toBeDisabled()
     expect(screen.getByLabelText(/full name/i)).toHaveValue('')
     expect(screen.getByLabelText(/email address/i)).toHaveValue('')
+  })
+
+  it('shows a safe error message and preserves entered values when submission fails', async () => {
+    submitToAirtable.mockRejectedValueOnce(
+      new Error('Invalid permissions on this resource'),
+    )
+    const user = userEvent.setup()
+
+    render(<App />)
+
+    await user.type(screen.getByLabelText(/full name/i), 'Jane Doe')
+    await user.type(screen.getByLabelText(/email address/i), 'jane@example.com')
+    await user.type(screen.getByLabelText(/contact number/i), '91234567')
+    await user.selectOptions(
+      screen.getByLabelText(/service type/i),
+      'General Enquiry',
+    )
+    fireEvent.change(screen.getByLabelText(/preferred date/i), {
+      target: { value: '2026-04-12' },
+    })
+
+    await user.click(screen.getByRole('button', { name: /submit application/i }))
+
+    expect(
+      await screen.findByText(
+        "We couldn't submit your application right now. Please try again.",
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('heading', { name: /application submitted/i }),
+    ).not.toBeInTheDocument()
+    expect(screen.getByLabelText(/full name/i)).toHaveValue('Jane Doe')
+    expect(screen.getByLabelText(/email address/i)).toHaveValue(
+      'jane@example.com',
+    )
+  })
+
+  it('prevents duplicate submissions while a request is in flight', async () => {
+    let resolveSubmission
+    submitToAirtable.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          resolveSubmission = resolve
+        }),
+    )
+    const user = userEvent.setup()
+
+    render(<App />)
+
+    await user.type(screen.getByLabelText(/full name/i), 'Jane Doe')
+    await user.type(screen.getByLabelText(/email address/i), 'jane@example.com')
+    await user.type(screen.getByLabelText(/contact number/i), '91234567')
+    await user.selectOptions(
+      screen.getByLabelText(/service type/i),
+      'General Enquiry',
+    )
+    fireEvent.change(screen.getByLabelText(/preferred date/i), {
+      target: { value: '2026-04-12' },
+    })
+
+    const submitButton = screen.getByRole('button', {
+      name: /submit application/i,
+    })
+
+    await user.click(submitButton)
+    expect(screen.getByRole('button', { name: /submitting/i })).toBeDisabled()
+    expect(submitToAirtable).toHaveBeenCalledTimes(1)
+
+    fireEvent.submit(screen.getByRole('form', { name: /mock service application form/i }))
+    expect(submitToAirtable).toHaveBeenCalledTimes(1)
+
+    resolveSubmission({
+      recordId: 'rec123',
+      createdTime: '2026-04-06T14:00:00.000Z',
+      fields: {},
+    })
+
+    expect(
+      await screen.findByRole('heading', { name: /application submitted/i }),
+    ).toBeInTheDocument()
   })
 })
