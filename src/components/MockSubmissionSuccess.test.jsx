@@ -21,7 +21,7 @@ describe('MockSubmissionSuccess', () => {
     )
 
     expect(
-      screen.getByRole('heading', { name: /application submitted/i }),
+      screen.getByRole('heading', { level: 1, name: /application submitted/i }),
     ).toBeInTheDocument()
     expect(screen.getByText(/your service request has been received\./i)).toBeInTheDocument()
 

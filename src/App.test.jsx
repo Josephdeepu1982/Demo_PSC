@@ -24,7 +24,7 @@ beforeEach(() => {
 })
 
 describe('App', () => {
-  it('binds form inputs to local state, updates the preview, and enables submit once valid', async () => {
+  it('binds form inputs to local state and enables submit once valid', async () => {
     const user = userEvent.setup()
 
     render(<App />)
@@ -55,16 +55,22 @@ describe('App', () => {
     expect(screen.getByDisplayValue('Need a morning slot')).toBeInTheDocument()
     expect(screen.getByText('19 / 300')).toBeInTheDocument()
     expect(submitButton).toBeEnabled()
+  })
+
+  it('renders the Ruby-aligned form shell without the development preview panel', () => {
+    render(<App />)
+
     expect(
-      screen.getByText(
-        'This preview mirrors the current form state before submission and is shown for development visibility.',
-      ),
+      screen.getByRole('heading', { level: 1, name: /service application form/i }),
     ).toBeInTheDocument()
     expect(
-      within(screen.getByLabelText(/mock form preview/i)).getByText(
-        'Need a morning slot',
-      ),
+      screen.getByText(/please fill in the details below to submit your service request\./i),
     ).toBeInTheDocument()
+    expect(
+      screen.getByRole('form', { name: /service application form/i }),
+    ).toBeInTheDocument()
+    expect(screen.queryByText(/^preview$/i)).not.toBeInTheDocument()
+    expect(screen.queryByLabelText(/mock form preview/i)).not.toBeInTheDocument()
   })
 
   it('shows a blur validation error and clears it after the field is corrected', async () => {
@@ -87,9 +93,7 @@ describe('App', () => {
   it('marks fields as touched on submit and focuses the first invalid field', async () => {
     render(<App />)
 
-    const form = screen.getByRole('form', {
-      name: /mock service application form/i,
-    })
+    const form = screen.getByRole('form', { name: /service application form/i })
     const fullNameInput = screen.getByLabelText(/full name/i)
 
     fireEvent.submit(form)
@@ -133,7 +137,10 @@ describe('App', () => {
     expect(submitToAirtable).toHaveBeenCalledTimes(1)
 
     expect(
-      await screen.findByRole('heading', { name: /application submitted/i }),
+      await screen.findByRole('heading', {
+        level: 1,
+        name: /application submitted/i,
+      }),
     ).toBeInTheDocument()
     expect(screen.getByText(/your service request has been received\./i)).toBeInTheDocument()
     const submissionSummary = screen.getByLabelText(/submission summary/i)
@@ -208,7 +215,7 @@ describe('App', () => {
       ),
     ).toBeInTheDocument()
     expect(
-      screen.queryByRole('heading', { name: /application submitted/i }),
+      screen.queryByRole('heading', { level: 1, name: /application submitted/i }),
     ).not.toBeInTheDocument()
     expect(screen.getByLabelText(/full name/i)).toHaveValue('Jane Doe')
     expect(screen.getByLabelText(/email address/i)).toHaveValue(
@@ -247,7 +254,7 @@ describe('App', () => {
     expect(screen.getByRole('button', { name: /submitting/i })).toBeDisabled()
     expect(submitToAirtable).toHaveBeenCalledTimes(1)
 
-    fireEvent.submit(screen.getByRole('form', { name: /mock service application form/i }))
+    fireEvent.submit(screen.getByRole('form', { name: /service application form/i }))
     expect(submitToAirtable).toHaveBeenCalledTimes(1)
 
     resolveSubmission({
@@ -257,7 +264,10 @@ describe('App', () => {
     })
 
     expect(
-      await screen.findByRole('heading', { name: /application submitted/i }),
+      await screen.findByRole('heading', {
+        level: 1,
+        name: /application submitted/i,
+      }),
     ).toBeInTheDocument()
   })
 })

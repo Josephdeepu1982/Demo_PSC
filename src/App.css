@@ -36,8 +36,8 @@
 }
 
 .mockFormLayout {
-  display: grid;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
@@ -102,57 +102,6 @@
   color: #8a90a0;
   font-size: 0.95rem;
   text-align: right;
-}
-
-.previewPanel {
-  padding: 1.25rem 1.35rem;
-  border: 1px solid #e6e8ef;
-  border-radius: 1rem;
-  background: #f8faff;
-}
-
-.previewTitle {
-  margin: 0;
-  color: #1f2430;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.previewDescription {
-  margin: 0.45rem 0 1rem;
-  color: #5f6775;
-  font-size: 0.95rem;
-}
-
-.previewList {
-  margin: 0;
-}
-
-.previewRow {
-  display: grid;
-  gap: 0.2rem;
-  padding: 0.75rem 0;
-  border-top: 1px solid #e2e7f2;
-}
-
-.previewRow:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-
-.previewRow dt {
-  color: #51607a;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.previewRow dd {
-  margin: 0;
-  color: #1f2430;
-  font-size: 0.98rem;
-  line-height: 1.5;
 }
 
 .successState {

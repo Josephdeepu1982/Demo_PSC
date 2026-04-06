@@ -20,7 +20,6 @@ The form now includes client-side validation behavior, real browser-side Airtabl
 
 - `Preferred Date` now uses a native date input to align with the Ruby `YYYY-MM-DD` validation model.
 - `Remarks` remains optional and the live counter continues to reflect the current textarea length.
-- The preview panel still mirrors local state only and remains a development aid rather than part of the intended end-user flow.
 
 ## Current Non-Goals
 

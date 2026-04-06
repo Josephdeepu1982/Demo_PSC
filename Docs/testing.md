@@ -47,7 +47,7 @@ Current automated tests verify:
 - Airtable request failures return user-safe errors
 - Airtable payload mapping and response parsing use the expected shapes
 - the success-state component renders summary content and handles the reset action
-- valid user input updates the controlled fields and preview panel
+- valid user input updates the controlled fields and enables submission only when the form is valid
 - the submit button becomes enabled only after the required fields are valid
 - blur-driven inline validation appears and clears after correction
 - a realistic validation-failure UI path keeps the user on the form with actionable errors

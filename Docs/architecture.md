@@ -42,4 +42,4 @@ The form currently uses one local state object with these keys:
 - `preferredDate`
 - `remarks`
 
-Each input is controlled by React state and updates through a shared change handler. Additional local state tracks touched fields, mock submission loading, and whether a submitted snapshot should render the success state. The preview panel reflects the current local state only while the form view is active.
+Each input is controlled by React state and updates through a shared change handler. Additional local state tracks touched fields, submission loading, and whether a submitted snapshot should render the success state.

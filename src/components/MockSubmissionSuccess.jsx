@@ -16,11 +16,11 @@ function MockSubmissionSuccess({ submission, onSubmitAnother }) {
   }
 
   return (
-    <section className="successState" aria-label="mock submission success state">
+    <section className="successState" aria-label="submission success state">
       <div className="successIcon" aria-hidden="true">
         ✓
       </div>
-      <h2 className="successTitle">Application Submitted</h2>
+      <h1 className="successTitle">Application Submitted</h1>
       <p className="successText">
         Thank you, <strong>{submission.fullName}</strong>. Your service request
         has been received.

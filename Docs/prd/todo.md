@@ -163,15 +163,15 @@
   - [x] confirm contributor guidance includes secret-handling expectations
 
 ## Phase 11: UI Parity Review
-- [ ] Compare the React UI against the Ruby screenshot and source files.
-- [ ] Verify labels, placeholders, required markers, and field order match.
-- [ ] Verify validation timing matches the current behavior.
-- [ ] Verify the success state matches the current tone and structure.
-- [ ] Record any intentional deviations in `docs/ui-parity-notes.md`.
-- [ ] Update executive-facing notes if the implementation differs in any visible way.
-- [ ] Perform a security review:
-  - [ ] confirm parity work did not introduce unsafe debugging helpers
-  - [ ] confirm no accidental developer tooling is exposed in production paths
+- [x] Compare the React UI against the Ruby screenshot and source files.
+- [x] Verify labels, placeholders, required markers, and field order match.
+- [x] Verify validation timing matches the current behavior.
+- [x] Verify the success state matches the current tone and structure.
+- [x] Record any intentional deviations in `docs/ui-parity-notes.md`.
+- [x] Update executive-facing notes if the implementation differs in any visible way.
+- [x] Perform a security review:
+  - [x] confirm parity work did not introduce unsafe debugging helpers
+  - [x] confirm no accidental developer tooling is exposed in production paths
 
 ## Phase 12: Documentation Hardening
 - [ ] Review and refine `README.md`.

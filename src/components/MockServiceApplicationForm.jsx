@@ -116,27 +116,6 @@ function MockServiceApplicationForm() {
     setSubmissionError('')
   }
 
-  const previewItems = [
-    { label: 'Full Name', value: formValues.fullName || 'Not provided yet' },
-    { label: 'Email Address', value: formValues.email || 'Not provided yet' },
-    {
-      label: 'Contact Number',
-      value: formValues.contactNumber || 'Not provided yet',
-    },
-    {
-      label: 'Service Type',
-      value: formValues.serviceType || 'Not selected yet',
-    },
-    {
-      label: 'Preferred Date',
-      value: formValues.preferredDate || 'Not provided yet',
-    },
-    {
-      label: 'Remarks',
-      value: formValues.remarks || 'No remarks entered yet',
-    },
-  ]
-
   if (submittedValues) {
     return (
       <MockSubmissionSuccess
@@ -148,9 +127,13 @@ function MockServiceApplicationForm() {
 
   return (
     <div className="mockFormLayout">
+      <h1 className="pageTitle">Service Application Form</h1>
+      <p className="pageSubtitle">
+        Please fill in the details below to submit your service request.
+      </p>
       <form
         className="service-form"
-        aria-label="Mock service application form"
+        aria-label="Service application form"
         noValidate
         onSubmit={handleSubmit}
       >
@@ -319,22 +302,6 @@ function MockServiceApplicationForm() {
           </div>
         ) : null}
       </form>
-
-      <aside className="previewPanel" aria-label="Mock form preview">
-        <h2 className="previewTitle">Preview</h2>
-        <p className="previewDescription">
-          This preview mirrors the current form state before submission and is
-          shown for development visibility.
-        </p>
-        <dl className="previewList">
-          {previewItems.map((item) => (
-            <div key={item.label} className="previewRow">
-              <dt>{item.label}</dt>
-              <dd>{item.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </aside>
     </div>
   )
 }

@@ -41,6 +41,9 @@ Based on the attached Ruby implementation and UI image, the current form experie
 - A submit button that stays disabled until the form is valid
 - A simple success state confirming the submission
 
+## Current Visible Differences
+- Minor browser-native styling differences may still appear for controls such as the date input and select, depending on platform and browser.
+
 ## Success Measures
 - The rebuilt form looks and behaves like the current version with minimal visible change
 - Existing validation rules and error messages are preserved

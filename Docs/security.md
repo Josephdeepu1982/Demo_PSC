@@ -29,7 +29,7 @@
 - Form data is kept in local React state only.
 - No form values are logged to the console by default.
 - No sensitive example values were added to docs, tests, or UI copy.
-- The preview panel is local-only and does not submit or transmit data.
+- No local-only developer preview UI is exposed in the rendered form path.
 
 ## Phase 4 Review
 
