@@ -48,16 +48,16 @@
   - [x] confirm no debug data is exposed in the page
 
 ## Phase 3: Basic Form State With Mock Data
-- [ ] Add local state for all form fields.
-- [ ] Bind each input to state.
-- [ ] Make the remarks counter update from actual typed input.
-- [ ] Keep the form using mock data only with no submission yet.
-- [ ] Add a simple debug-free preview path for development if needed.
-- [ ] Document the component structure in `docs/form-behavior.md`.
-- [ ] Document the field state model in `docs/architecture.md`.
-- [ ] Perform a basic security review:
-  - [ ] confirm no form data is logged to the console by default
-  - [ ] confirm no sensitive test values are checked into docs or examples
+- [x] Add local state for all form fields.
+- [x] Bind each input to state.
+- [x] Make the remarks counter update from actual typed input.
+- [x] Keep the form using mock data only with no submission yet.
+- [x] Add a simple debug-free preview path for development if needed.
+- [x] Document the component structure in `docs/form-behavior.md`.
+- [x] Document the field state model in `docs/architecture.md`.
+- [x] Perform a basic security review:
+  - [x] confirm no form data is logged to the console by default
+  - [x] confirm no sensitive test values are checked into docs or examples
 
 ## Phase 4: Validation Foundations
 - [ ] Create a constants module for service type options.
