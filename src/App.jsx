@@ -1,15 +1,15 @@
 import './App.css'
+import MockServiceApplicationForm from './components/MockServiceApplicationForm.jsx'
 
 function App() {
   return (
     <main className="app">
-      <section className="hero" aria-label="application bootstrap status">
-        <p className="eyebrow">Phase 1 initialization</p>
-        <h1>Hello World</h1>
-        <p className="description">
-          The React scaffold is running and ready for the PSC service application
-          form implementation.
+      <section className="cardShell" aria-label="service application form mockup">
+        <h1 className="pageTitle">Service Application Form</h1>
+        <p className="pageSubtitle">
+          Please fill in the details below to submit your service request.
         </p>
+        <MockServiceApplicationForm />
       </section>
     </main>
   )

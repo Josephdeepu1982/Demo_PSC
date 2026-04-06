@@ -26,26 +26,26 @@
   - [x] confirm no unnecessary dependencies were added
 
 ## Phase 2: Basic UI With Mock Data
-- [ ] Replace `Hello World` with a static page shell.
-- [ ] Add the main card container.
-- [ ] Add the page title and subtitle.
-- [ ] Add a mock form component with no real behavior.
-- [ ] Add the Full Name field with label and placeholder.
-- [ ] Add the Email Address field with label and placeholder.
-- [ ] Add the Contact Number field with label and placeholder.
-- [ ] Add the Service Type select with mock options.
-- [ ] Add the Preferred Date field.
-- [ ] Add the Remarks textarea.
-- [ ] Add the remarks character counter with mock value.
-- [ ] Add the primary submit button in a disabled visual state.
-- [ ] Recreate the current spacing, typography, and layout as closely as possible.
-- [ ] Capture screenshots or notes comparing the mock UI to the Ruby form.
-- [ ] Add a `docs/ui-parity-notes.md` file to track visual parity decisions.
-- [ ] Add a `docs/business-rules.md` starter that lists all fields and current labels.
-- [ ] Perform a basic security review of the mock UI:
-  - [ ] confirm no secrets are present in the UI layer
-  - [ ] confirm no network calls are made yet
-  - [ ] confirm no debug data is exposed in the page
+- [x] Replace `Hello World` with a static page shell.
+- [x] Add the main card container.
+- [x] Add the page title and subtitle.
+- [x] Add a mock form component with no real behavior.
+- [x] Add the Full Name field with label and placeholder.
+- [x] Add the Email Address field with label and placeholder.
+- [x] Add the Contact Number field with label and placeholder.
+- [x] Add the Service Type select with mock options.
+- [x] Add the Preferred Date field.
+- [x] Add the Remarks textarea.
+- [x] Add the remarks character counter with mock value.
+- [x] Add the primary submit button in a disabled visual state.
+- [x] Recreate the current spacing, typography, and layout as closely as possible.
+- [x] Capture screenshots or notes comparing the mock UI to the Ruby form.
+- [x] Add a `docs/ui-parity-notes.md` file to track visual parity decisions.
+- [x] Add a `docs/business-rules.md` starter that lists all fields and current labels.
+- [x] Perform a basic security review of the mock UI:
+  - [x] confirm no secrets are present in the UI layer
+  - [x] confirm no network calls are made yet
+  - [x] confirm no debug data is exposed in the page
 
 ## Phase 3: Basic Form State With Mock Data
 - [ ] Add local state for all form fields.
