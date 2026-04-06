@@ -1,29 +1,52 @@
 # Demo_PSC
 
-This repository currently contains the PRD documentation and project working rules for the React rebuild of the PSC service application form.
+This repository contains the React rebuild of the PSC service application form plus the PRD and implementation notes that guide the work.
 
 ## Current Status
 
-- PRD documents are available under `Docs/prd/`.
-- Project governance rules are available under `.cursor/rules/`.
-- Phase 0 working-agreement decisions are documented in `Docs/prd/implementation-assumptions.md`.
-- The initial scaffold target is `Vite + React`.
-- Environment strategy is `/.env.local` for local development, `/.env.example` for placeholders, and deployment-managed environment variables for releases.
-- The React application scaffold has not been created yet.
+- The project now has a minimal `Vite + React` scaffold in place.
+- The app currently renders a small `Hello World` bootstrap page for Phase 1 verification.
+- PRD documents live under `Docs/prd/`.
+- Project implementation docs live under `docs/`.
+- Cursor rules live under `.cursor/rules/`.
 
-## Active Project Rules
+## Getting Started
 
-The following Cursor rules have been added to guide implementation work:
+1. Install dependencies:
 
-- `form-validation.mdc`: validates required fields, inline errors, preserved values, and helper-based validation structure
-- `git-branching.mdc`: standardizes commit messages, branch names, and PR naming
-- `code-style.mdc`: sets naming, file structure, and readability expectations
-- `testing-rules.mdc`: sets testing expectations and test naming guidance
-- `pr-rules.mdc`: defines PR description content and merge-readiness checks
-- `security-rules.mdc`: enforces secret handling, validation, and input-safety expectations
-- `ai-usage-rules.mdc`: requires planning, clarification, and change transparency for substantial work
-- `documentation-rules.mdc`: defines code-comment and README maintenance expectations
+```bash
+npm install
+```
 
-## Next Planned Work
+2. Start the local dev server:
 
-The current implementation checklist lives in `Docs/prd/todo.md`. Phase 0 is complete, and the next major step is Phase 1 project initialization, including the Vite React scaffold, baseline documentation, and initial local setup files.
+```bash
+npm run dev
+```
+
+3. Run lint checks:
+
+```bash
+npm run lint
+```
+
+4. Run tests:
+
+```bash
+npm run test
+```
+
+## Environment Setup
+
+- Use `.env.local` for local values.
+- Use `.env.example` as the committed placeholder template.
+- Keep deployment values in the hosting platform's environment settings.
+- Do not commit real Airtable credentials or other secrets.
+
+## Key Documentation
+
+- `Docs/prd/todo.md`: phased implementation checklist
+- `Docs/prd/project-requirements.md`: detailed product and technical requirements
+- `Docs/prd/implementation-assumptions.md`: confirmed constraints, source references, and open decisions
+- `docs/architecture.md`: current scaffold structure and intended code organization
+- `docs/security.md`: current security posture and known limitations

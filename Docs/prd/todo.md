@@ -10,20 +10,20 @@
 - [x] Add a standing security note to the implementation docs explaining that direct browser-to-Airtable is an explicit project constraint with tradeoffs.
 
 ## Phase 1: Project Initialization
-- [ ] Create the React project scaffold.
-- [ ] Start with the smallest possible page that renders `Hello World`.
-- [ ] Verify the app runs locally.
-- [ ] Add a minimal project README with startup instructions.
-- [ ] Add a `docs/architecture.md` stub describing the intended folder structure.
-- [ ] Add a `docs/security.md` stub describing the current security posture and known limitations.
-- [ ] Add a `.env.example` file placeholder without real secrets.
-- [ ] Add a basic lint and test command to the project scripts.
-- [ ] Add a placeholder test that proves the app renders.
-- [ ] Document the initialization step and any setup assumptions.
-- [ ] Perform a basic security review of the scaffold:
-  - [ ] confirm no secrets are committed
-  - [ ] confirm example env values are placeholders only
-  - [ ] confirm no unnecessary dependencies were added
+- [x] Create the React project scaffold.
+- [x] Start with the smallest possible page that renders `Hello World`.
+- [x] Verify the app runs locally.
+- [x] Add a minimal project README with startup instructions.
+- [x] Add a `docs/architecture.md` stub describing the intended folder structure.
+- [x] Add a `docs/security.md` stub describing the current security posture and known limitations.
+- [x] Add a `.env.example` file placeholder without real secrets.
+- [x] Add a basic lint and test command to the project scripts.
+- [x] Add a placeholder test that proves the app renders.
+- [x] Document the initialization step and any setup assumptions.
+- [x] Perform a basic security review of the scaffold:
+  - [x] confirm no secrets are committed
+  - [x] confirm example env values are placeholders only
+  - [x] confirm no unnecessary dependencies were added
 
 ## Phase 2: Basic UI With Mock Data
 - [ ] Replace `Hello World` with a static page shell.
