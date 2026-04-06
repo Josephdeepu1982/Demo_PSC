@@ -14,6 +14,14 @@ npm run test
 
 This is the single documented command for the current test workflow.
 
+For the broader pre-review workflow, run:
+
+```bash
+npm run verify
+```
+
+That command runs the standard local checks before review. See `CONTRIBUTING.md` for the full contributor workflow and documentation update checklist.
+
 ## Validation Coverage In Scope
 
 The current validation phase is intended to cover:

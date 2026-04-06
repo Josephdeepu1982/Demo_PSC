@@ -152,15 +152,15 @@
   - [x] confirm no real Airtable secrets are used in tests
 
 ## Phase 10: Developer Workflow
-- [ ] Make sure tests run with a single documented command.
-- [ ] Add linting or formatting commands if they are part of the chosen stack.
-- [ ] Add a checklist for local verification before review.
-- [ ] Add a checklist for documentation updates before review.
-- [ ] Document the AI-assisted workflow expectations for small increments.
-- [ ] Add a note on when to regenerate or refresh AI-generated documentation.
-- [ ] Perform a security review:
-  - [ ] confirm local workflow docs do not encourage storing secrets in code
-  - [ ] confirm contributor guidance includes secret-handling expectations
+- [x] Make sure tests run with a single documented command.
+- [x] Add linting or formatting commands if they are part of the chosen stack.
+- [x] Add a checklist for local verification before review.
+- [x] Add a checklist for documentation updates before review.
+- [x] Document the AI-assisted workflow expectations for small increments.
+- [x] Add a note on when to regenerate or refresh AI-generated documentation.
+- [x] Perform a security review:
+  - [x] confirm local workflow docs do not encourage storing secrets in code
+  - [x] confirm contributor guidance includes secret-handling expectations
 
 ## Phase 11: UI Parity Review
 - [ ] Compare the React UI against the Ruby screenshot and source files.

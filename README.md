@@ -36,6 +36,12 @@ npm run lint
 npm run test
 ```
 
+5. Run the standard pre-review verification checks:
+
+```bash
+npm run verify
+```
+
 ## Environment Setup
 
 - Use `.env.local` for local values.
@@ -53,6 +59,7 @@ npm run test
 - `Docs/prd/todo.md`: phased implementation checklist
 - `Docs/prd/project-requirements.md`: detailed product and technical requirements
 - `Docs/prd/implementation-assumptions.md`: confirmed constraints, source references, and open decisions
+- `CONTRIBUTING.md`: contributor workflow, review checklist, documentation checklist, and AI-assisted workflow expectations
 - `docs/architecture.md`: current scaffold structure and intended code organization
 - `docs/airtable-mapping.md`: Airtable field mapping and payload shape
 - `docs/security.md`: current security posture and known limitations
