@@ -7,12 +7,26 @@ import {
   within,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { submitToAirtable } from './submission/airtableSubmission.js'
+import { fetchSubmissionsWithFallback } from './submission/airtableSubmissions.js'
 
 vi.mock('./submission/airtableSubmission.js', () => ({
   submitToAirtable: vi.fn(),
 }))
+
+vi.mock('./submission/airtableSubmissions.js', () => ({
+  fetchSubmissionsWithFallback: vi.fn(),
+}))
+
+function renderApp(initialEntries = ['/']) {
+  return render(
+    <MemoryRouter initialEntries={initialEntries}>
+      <App />
+    </MemoryRouter>,
+  )
+}
 
 beforeEach(() => {
   vi.clearAllMocks()
@@ -21,13 +35,18 @@ beforeEach(() => {
     createdTime: '2026-04-06T14:00:00.000Z',
     fields: {},
   })
+  fetchSubmissionsWithFallback.mockResolvedValue({
+    submissions: [],
+    source: 'airtable',
+    warning: '',
+  })
 })
 
 describe('App', () => {
   it('binds form inputs to local state and enables submit once valid', async () => {
     const user = userEvent.setup()
 
-    render(<App />)
+    renderApp()
 
     const submitButton = screen.getByRole('button', {
       name: /submit application/i,
@@ -58,7 +77,7 @@ describe('App', () => {
   })
 
   it('renders the Ruby-aligned form shell without the development preview panel', () => {
-    render(<App />)
+    renderApp()
 
     expect(
       screen.getByRole('heading', { level: 1, name: /service application form/i }),
@@ -76,7 +95,7 @@ describe('App', () => {
   it('shows a blur validation error and clears it after the field is corrected', async () => {
     const user = userEvent.setup()
 
-    render(<App />)
+    renderApp()
 
     const fullNameInput = screen.getByLabelText(/full name/i)
 
@@ -91,7 +110,7 @@ describe('App', () => {
   })
 
   it('marks fields as touched on submit and focuses the first invalid field', async () => {
-    render(<App />)
+    renderApp()
 
     const form = screen.getByRole('form', { name: /service application form/i })
     const fullNameInput = screen.getByLabelText(/full name/i)
@@ -118,7 +137,7 @@ describe('App', () => {
   it('shows a loading state and then renders the mock success summary', async () => {
     const user = userEvent.setup()
 
-    render(<App />)
+    renderApp()
 
     await user.type(screen.getByLabelText(/full name/i), 'Jane Doe')
     await user.type(screen.getByLabelText(/email address/i), 'jane@example.com')
@@ -158,7 +177,7 @@ describe('App', () => {
   it('hides the remarks row when no remarks were submitted and resets on submit another', async () => {
     const user = userEvent.setup()
 
-    render(<App />)
+    renderApp()
 
     await user.type(screen.getByLabelText(/full name/i), 'Jane Doe')
     await user.type(screen.getByLabelText(/email address/i), 'jane@example.com')
@@ -194,7 +213,7 @@ describe('App', () => {
     )
     const user = userEvent.setup()
 
-    render(<App />)
+    renderApp()
 
     await user.type(screen.getByLabelText(/full name/i), 'Jane Doe')
     await user.type(screen.getByLabelText(/email address/i), 'jane@example.com')
@@ -233,7 +252,7 @@ describe('App', () => {
     )
     const user = userEvent.setup()
 
-    render(<App />)
+    renderApp()
 
     await user.type(screen.getByLabelText(/full name/i), 'Jane Doe')
     await user.type(screen.getByLabelText(/email address/i), 'jane@example.com')
@@ -269,5 +288,31 @@ describe('App', () => {
         name: /application submitted/i,
       }),
     ).toBeInTheDocument()
+  })
+
+  it('renders the submissions route when the url matches /submissions', async () => {
+    fetchSubmissionsWithFallback.mockResolvedValueOnce({
+      submissions: [
+        {
+          fullName: 'Jane Doe',
+          email: 'jane@example.com',
+          contactNumber: '91234567',
+          serviceType: 'General Enquiry',
+          preferredDate: '2026-04-12',
+          remarks: '',
+          submittedAt: '2026-04-06T14:00:00.000Z',
+        },
+      ],
+      source: 'airtable',
+      warning: '',
+    })
+
+    renderApp(['/submissions'])
+
+    expect(
+      await screen.findByRole('heading', { level: 1, name: /all submissions/i }),
+    ).toBeInTheDocument()
+    expect(screen.getByText(/1 submission received so far\./i)).toBeInTheDocument()
+    expect(screen.getByText('Jane Doe')).toBeInTheDocument()
   })
 })

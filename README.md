@@ -4,8 +4,8 @@ This repository contains the React rebuild of the PSC service application form p
 
 ## Current Status
 
-- The project now has a minimal `Vite + React` scaffold in place.
-- The app currently renders a small `Hello World` bootstrap page for Phase 1 verification.
+- The project now includes the live service application form, Airtable-backed submission flow, and a state-based success view.
+- The app also exposes a `/submissions` page that mirrors the Ruby list view by reading submission records directly from Airtable in the browser.
 - PRD documents live under `Docs/prd/`.
 - Project implementation docs live under `docs/`.
 - Cursor rules live under `.cursor/rules/`.
@@ -53,6 +53,7 @@ npm run verify
   - `VITE_AIRTABLE_BASE_ID`
   - `VITE_AIRTABLE_TABLE_NAME`
 - Because `VITE_` variables are exposed to the client bundle, direct browser-to-Airtable should be treated as a temporary or constrained solution rather than a hardened production boundary.
+- The `/submissions` route now uses the same Airtable configuration for browser-side record reads, which increases the exposure risk compared with create-only form submission.
 
 ## Key Documentation
 

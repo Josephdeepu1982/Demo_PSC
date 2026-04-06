@@ -3,6 +3,7 @@ import MockSubmissionSuccess from './MockSubmissionSuccess.jsx'
 import { serviceTypeOptions } from '../constants/serviceTypeOptions.js'
 import { remarksMaxLength } from '../constants/validationRules.js'
 import { submitToAirtable } from '../submission/airtableSubmission.js'
+import { saveLocalSubmission } from '../submission/submissionsStore.js'
 import { buildSubmission } from '../submission/submissionData.js'
 import {
   formFieldNames,
@@ -100,6 +101,7 @@ function MockServiceApplicationForm() {
       await submitToAirtable(formValues, {
         submittedAt: submission.submittedAt,
       })
+      saveLocalSubmission(submission)
       setSubmittedValues(submission)
     } catch {
       setSubmissionError(submissionFailureMessage)

@@ -229,6 +229,99 @@
   background: #f8faff;
 }
 
+.submissionsCard {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.submissionsSubtitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0;
+}
+
+.sourceBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sourceBadgeAirtable {
+  background: #e8f1ff;
+  color: #2f68c9;
+}
+
+.sourceBadgeLocal {
+  background: #fff4de;
+  color: #9a6400;
+}
+
+.submissionAlert {
+  padding: 0.95rem 1rem;
+  border: 1px solid #f2d39b;
+  border-radius: 0.75rem;
+  background: #fff8eb;
+  color: #8c5f08;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.emptyState {
+  padding: 1.5rem;
+  border: 1px dashed #d9deea;
+  border-radius: 1rem;
+  background: #fbfcff;
+  color: #5f6775;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.submissionsList {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.submissionListItem {
+  padding: 1rem 1.1rem;
+  border: 1px solid #e6e8ef;
+  border-radius: 1rem;
+  background: #fbfcff;
+}
+
+.submissionName {
+  color: #1f2430;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.submissionMeta {
+  margin-top: 0.35rem;
+  color: #5f6775;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.backLink {
+  justify-self: start;
+  color: #2f68c9;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 640px) {
   .app {
     padding: 1rem;
@@ -241,5 +334,9 @@
 
   .pageSubtitle {
     margin-bottom: 1.5rem;
+  }
+
+  .submissionsSubtitle {
+    align-items: flex-start;
   }
 }
