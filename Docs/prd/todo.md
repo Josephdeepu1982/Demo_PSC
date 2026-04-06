@@ -1,6 +1,8 @@
 # TODO
 
 ## Phase 0: Working Agreement
+- [x] Add initial project rules for form validation, git and branching, and code style under `.cursor/rules/`.
+- [x] Update `README.md` to reflect the current documentation-first project state and active rules.
 - [ ] Confirm the source of truth files from the Ruby app and attach them to implementation notes.
 - [ ] Confirm the target React toolchain for the initial scaffold.
 - [ ] Confirm where environment configuration will live for local development and deployment.
