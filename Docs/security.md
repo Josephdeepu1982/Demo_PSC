@@ -31,6 +31,13 @@
 - No sensitive example values were added to docs, tests, or UI copy.
 - The preview panel is local-only and does not submit or transmit data.
 
+## Phase 4 Review
+
+- Client-side validation is strictly a user experience aid and does not replace backend validation or submission-side safeguards.
+- The validation helpers contain only static limits, patterns, and allowed option values. They do not embed secrets, API keys, tokens, or environment-specific configuration.
+- Invalid client-side states keep the submit button disabled, and the form submit handler still blocks invalid submissions as a defensive fallback.
+- Error messages remain user-facing validation copy only and do not expose internal implementation details.
+
 ## Follow-Up Areas
 
 - Revisit secret handling before Airtable integration begins.
