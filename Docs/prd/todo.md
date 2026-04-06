@@ -137,19 +137,19 @@
   - [x] confirm duplicate-submission risk is reduced
 
 ## Phase 9: Unit Tests
-- [ ] Add unit tests for validation helpers.
-- [ ] Add unit tests for service type rules.
-- [ ] Add unit tests for remarks length handling.
-- [ ] Add unit tests for touched-state behavior.
-- [ ] Add unit tests for submit-button enable and disable behavior.
-- [ ] Add unit tests for payload mapping to Airtable field names.
-- [ ] Add unit tests for success-state rendering.
-- [ ] Add at least one UI interaction test covering a realistic happy path.
-- [ ] Add at least one UI interaction test covering a realistic validation failure.
-- [ ] Document how to run tests in `docs/testing.md`.
-- [ ] Perform a security review:
-  - [ ] confirm tests use fake data
-  - [ ] confirm no real Airtable secrets are used in tests
+- [x] Add unit tests for validation helpers.
+- [x] Add unit tests for service type rules.
+- [x] Add unit tests for remarks length handling.
+- [x] Add unit tests for touched-state behavior.
+- [x] Add unit tests for submit-button enable and disable behavior.
+- [x] Add unit tests for payload mapping to Airtable field names.
+- [x] Add unit tests for success-state rendering.
+- [x] Add at least one UI interaction test covering a realistic happy path.
+- [x] Add at least one UI interaction test covering a realistic validation failure.
+- [x] Document how to run tests in `docs/testing.md`.
+- [x] Perform a security review:
+  - [x] confirm tests use fake data
+  - [x] confirm no real Airtable secrets are used in tests
 
 ## Phase 10: Developer Workflow
 - [ ] Make sure tests run with a single documented command.

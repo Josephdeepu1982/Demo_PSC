@@ -127,4 +127,29 @@ describe('airtableSubmission', () => {
       ),
     ).rejects.toThrow('Invalid permissions on this resource')
   })
+
+  it('throws a user-safe error when the request cannot reach Airtable', async () => {
+    await expect(
+      submitToAirtable(
+        {
+          fullName: 'Jane Doe',
+          email: 'jane@example.com',
+          contactNumber: '91234567',
+          serviceType: 'General Enquiry',
+          preferredDate: '2026-04-12',
+          remarks: '',
+        },
+        {
+          env: {
+            VITE_AIRTABLE_TOKEN: 'token',
+            VITE_AIRTABLE_BASE_ID: 'app123',
+            VITE_AIRTABLE_TABLE_NAME: 'POC Demo',
+          },
+          fetchImpl: vi.fn().mockRejectedValue(new Error('socket hang up')),
+        },
+      ),
+    ).rejects.toThrow(
+      'Unable to reach Airtable. Check your network connection and try again.',
+    )
+  })
 })

@@ -36,6 +36,25 @@ describe('formValidation', () => {
     expect(validateRemarks('Need a morning slot')).toBe('')
   })
 
+  it('trims whitespace for required field validation', () => {
+    expect(validateFullName('   ')).toBe('Full Name is required.')
+    expect(validateEmail('   jane@example.com   ')).toBe('')
+    expect(validateContactNumber('   91234567   ')).toBe('')
+    expect(validatePreferredDate('   2026-04-12   ')).toBe('')
+  })
+
+  it('distinguishes required and invalid service type states', () => {
+    expect(validateServiceType('')).toBe('Please select a Service Type.')
+    expect(validateServiceType('Unknown')).toBe('Invalid Service Type selected.')
+  })
+
+  it('supports the remarks length boundary correctly', () => {
+    expect(validateRemarks('x'.repeat(300))).toBe('')
+    expect(validateRemarks('x'.repeat(301))).toBe(
+      'Remarks must be 300 characters or fewer.',
+    )
+  })
+
   it('validates the entire form in one pass', () => {
     expect(
       validateForm({
