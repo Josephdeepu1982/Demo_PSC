@@ -1,0 +1,35 @@
+---
+description: Pull request description and merge-readiness expectations
+alwaysApply: true
+---
+
+# Pull Request Rules
+
+- PR descriptions must explain what changed and why it was changed.
+- Include screenshots or recordings when the PR affects UI, layout, or visual behavior.
+- Keep PRs focused so reviewers can understand and validate the change easily.
+- Call out any notable risks, follow-up work, or areas that need extra reviewer attention.
+
+## PR Must Include
+
+- What was changed
+- Why it was changed
+- Screenshots if the PR includes UI changes
+
+## Checklist Before Merging
+
+- The PR title follows the project naming convention.
+- The description is complete and reflects the actual change.
+- Relevant tests were added or updated when needed.
+- Existing tests pass or any known failures are clearly explained.
+- Screenshots or recordings are attached for UI changes.
+- Risks, limitations, and follow-up items are documented when applicable.
+
+Example:
+
+```text
+PR must include:
+- What was changed
+- Why it was changed
+- Screenshots (if UI)
+```

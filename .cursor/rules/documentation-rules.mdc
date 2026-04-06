@@ -1,0 +1,30 @@
+---
+description: Documentation expectations for code comments and project onboarding docs
+alwaysApply: true
+---
+
+# Documentation Rules
+
+- Document code when the purpose, inputs, outputs, or business context would not be obvious to a new contributor.
+- All functions should include a short explanation of purpose and inputs when the behavior is not self-evident.
+- Keep comments concise, accurate, and focused on intent rather than restating the code line by line.
+- Update documentation alongside behavior changes so docs do not drift from the implementation.
+
+## Function Documentation
+
+- Every function must have comments when its purpose, assumptions, or inputs are not immediately clear from the code.
+- Prefer short descriptions that explain what the function does, what inputs it expects, and any important side effects.
+- Avoid noisy comments that simply restate obvious code.
+
+## README Expectations
+
+- Update the README when changes affect setup, workflows, architecture, business rules, or user-facing behavior.
+- The README should cover both technical context and business logic so new joiners can understand how the project works.
+- Include enough onboarding detail for a new contributor to understand the project's purpose, main flows, and development setup.
+
+Example:
+
+```text
+All functions must include a short explanation of purpose and inputs.
+README must be updated for both technical and business logic so new joiners can understand the project.
+```

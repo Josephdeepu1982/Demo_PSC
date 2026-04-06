@@ -1,0 +1,30 @@
+---
+description: Core security practices for secrets, validation, and input handling
+alwaysApply: true
+---
+
+# Security Rules
+
+- Never hardcode secrets, API keys, tokens, passwords, or credentials in source code.
+- Store secrets in environment variables or approved secret-management systems.
+- Validate all external input before processing, persisting, or using it in business logic.
+- Sanitize user-provided content before rendering, storing, or passing it into downstream systems.
+- Prefer allowlists, strict schemas, and explicit validation rules over loose checks.
+
+## Secret Management
+
+- No hardcoded secrets.
+- Never store API keys in code. Use environment variables.
+- Do not commit example values that look like real credentials.
+
+## Input Safety
+
+- Input validation is required for user input, request payloads, query parameters, and form data.
+- Sanitize user inputs before rendering them in the UI or using them in logs, queries, or templates.
+- Reject invalid or unexpected input early with clear error handling.
+
+Example:
+
+```text
+Never store API keys in code. Use environment variables.
+```

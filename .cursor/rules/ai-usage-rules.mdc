@@ -1,0 +1,33 @@
+---
+description: AI workflow expectations for planning, clarification, and change transparency
+alwaysApply: true
+---
+
+# AI Usage Rules
+
+- Always generate a plan before coding when the task is non-trivial, spans multiple files, or has meaningful tradeoffs.
+- For substantial changes, present the plan and wait for confirmation before implementing.
+- Do not modify multiple files without first explaining the intended scope and reason for the changes.
+- Ask for clarification before making large, ambiguous, or potentially disruptive changes.
+- Prefer small, well-explained steps over broad edits without context.
+
+## Planning Before Coding
+
+- Before writing code, propose a plan and wait for confirmation when the task is large or complex.
+- Keep plans concise, concrete, and focused on the main implementation steps.
+
+## Change Transparency
+
+- Explain why multiple files need to change before editing them.
+- Call out major assumptions, tradeoffs, and expected side effects before implementation.
+
+## Clarification Expectations
+
+- Ask follow-up questions when requirements are incomplete, conflicting, or open to multiple interpretations.
+- Do not guess on product decisions or architecture when clarification is needed.
+
+Example:
+
+```text
+Before writing code, always propose a plan and wait for confirmation.
+```

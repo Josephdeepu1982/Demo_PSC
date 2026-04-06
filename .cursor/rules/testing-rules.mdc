@@ -1,0 +1,31 @@
+---
+description: Core testing expectations and test naming conventions
+alwaysApply: true
+---
+
+# Testing Rules
+
+- Every feature should include tests when the change introduces meaningful behavior or regression risk.
+- Prefer focused, maintainable tests over broad or repetitive coverage.
+- Each service method must have at least one unit test.
+- Add or update tests when behavior changes, bug fixes are made, or logic becomes complex enough to warrant protection.
+- Follow the project's existing test framework and nearby test patterns unless there is a clear reason to introduce a new pattern.
+
+## Test Coverage Expectations
+
+- Every feature must have tests.
+- Each service method must have at least one unit test.
+- Prefer unit tests for business logic and add integration or UI tests when cross-system behavior matters.
+
+## Naming Convention For Tests
+
+- Name test files and test cases clearly so the behavior under test is obvious.
+- Use descriptive test names that state the expected behavior, such as `returns user details for a valid id`.
+- Follow the repository's existing naming style for test files, such as `*.test.ts`, `*.spec.ts`, or framework-specific conventions already in use.
+
+Example:
+
+```text
+Service rule: each service method must have at least one unit test
+Test name: returns user details for a valid id
+```
