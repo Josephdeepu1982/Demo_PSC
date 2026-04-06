@@ -60,36 +60,36 @@
   - [x] confirm no sensitive test values are checked into docs or examples
 
 ## Phase 4: Validation Foundations
-- [ ] Create a constants module for service type options.
-- [ ] Create a constants module for validation limits and patterns.
-- [ ] Create a validation helper for Full Name.
-- [ ] Create a validation helper for Email Address.
-- [ ] Create a validation helper for Contact Number.
-- [ ] Create a validation helper for Service Type.
-- [ ] Create a validation helper for Preferred Date.
-- [ ] Create a validation helper for Remarks.
-- [ ] Create a single function that validates the entire form.
-- [ ] Document all validation rules in `docs/business-rules.md`.
-- [ ] Document any gaps between Ruby validation and frontend validation if discovered.
-- [ ] Perform a security review:
-  - [ ] confirm client validation does not create a false sense of backend security
-  - [ ] confirm validation helpers do not leak secrets or internal config
+- [x] Create a constants module for service type options.
+- [x] Create a constants module for validation limits and patterns.
+- [x] Create a validation helper for Full Name.
+- [x] Create a validation helper for Email Address.
+- [x] Create a validation helper for Contact Number.
+- [x] Create a validation helper for Service Type.
+- [x] Create a validation helper for Preferred Date.
+- [x] Create a validation helper for Remarks.
+- [x] Create a single function that validates the entire form.
+- [x] Document all validation rules in `docs/business-rules.md`.
+- [x] Document any gaps between Ruby validation and frontend validation if discovered.
+- [x] Perform a security review:
+  - [x] confirm client validation does not create a false sense of backend security
+  - [x] confirm validation helpers do not leak secrets or internal config
 
 ## Phase 5: Validation UI Behavior
-- [ ] Add touched-state tracking for each field.
-- [ ] Validate fields on blur.
-- [ ] Re-validate touched fields on input or change.
-- [ ] Show inline error messages under the correct fields.
-- [ ] Match the current error wording exactly.
-- [ ] Disable submit until required fields are valid.
-- [ ] On submit, mark all fields as touched.
-- [ ] Focus the first invalid field on failed submit.
-- [ ] Verify the remarks counter still behaves correctly.
+- [x] Add touched-state tracking for each field.
+- [x] Validate fields on blur.
+- [x] Re-validate touched fields on input or change.
+- [x] Show inline error messages under the correct fields.
+- [x] Match the current error wording exactly.
+- [x] Disable submit until required fields are valid.
+- [x] On submit, mark all fields as touched.
+- [x] Focus the first invalid field on failed submit.
+- [x] Verify the remarks counter still behaves correctly.
 - [ ] Update `docs/form-behavior.md` with the validation timing model.
 - [ ] Update `docs/testing.md` with the intended validation test coverage.
-- [ ] Perform a security review:
-  - [ ] confirm invalid states cannot accidentally trigger submission handlers
-  - [ ] confirm error messages do not expose sensitive implementation details
+- [x] Perform a security review:
+  - [x] confirm invalid states cannot accidentally trigger submission handlers
+  - [x] confirm error messages do not expose sensitive implementation details
 
 ## Phase 6: Success State With Mock Submission
 - [ ] Create a mock submit handler with no Airtable integration yet.

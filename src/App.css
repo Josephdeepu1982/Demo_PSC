@@ -85,6 +85,19 @@
   resize: vertical;
 }
 
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+  border-color: #d05a5a;
+  background: #fff8f8;
+}
+
+.errorMessage {
+  color: #b63d3d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .charCounter {
   color: #8a90a0;
   font-size: 0.95rem;
@@ -152,8 +165,25 @@
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.01em;
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.submitButton:disabled {
   opacity: 0.72;
   cursor: not-allowed;
+}
+
+.submitButton:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(74, 132, 236, 0.2);
+}
+
+.submitButton:not(:disabled):hover {
+  transform: translateY(-1px);
 }
 
 @media (max-width: 640px) {
