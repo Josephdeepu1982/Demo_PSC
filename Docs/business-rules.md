@@ -46,9 +46,16 @@
 - Title: `Service Application Form`
 - Subtitle: `Please fill in the details below to submit your service request.`
 - Submit button: `Submit Application`
+- Submission failure message: `We couldn't submit your application right now. Please try again.`
 
 ## Validation Parity Notes
 
 - The React form now matches the Ruby validation messages and allowed service type values.
 - The React preferred date field was updated from a free-text mock input to a native date input so the frontend matches the Ruby `YYYY-MM-DD` validation model.
 - No remaining Ruby-to-frontend validation rule gaps were identified in this phase.
+
+## Submission Notes
+
+- The frontend now submits directly to Airtable from the browser using the documented field mapping.
+- The Ruby server's local fallback storage behavior is not preserved in the frontend-only implementation.
+- On submission failure, the frontend keeps the current form values and shows a user-safe generic error message instead of a fallback success path.

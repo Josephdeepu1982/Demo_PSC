@@ -2,7 +2,7 @@
 
 ## Current Scope
 
-The form now includes client-side validation behavior plus a state-based mock submission flow and a first success state, while still stopping short of real Airtable integration.
+The form now includes client-side validation behavior, real browser-side Airtable submission, and a state-based success state in the React SPA.
 
 ## Validation Timing Model
 
@@ -24,18 +24,19 @@ The form now includes client-side validation behavior plus a state-based mock su
 
 ## Current Non-Goals
 
-- No real network request is sent yet.
-- No Airtable integration is implemented yet.
 - No route-based success page exists yet.
-- No fallback or retry behavior exists yet for submission failures.
+- No local fallback store exists when Airtable submission fails.
+- No retry flow exists yet after a failed submission attempt.
 
-## Mock Submission Flow
+## Submission Flow
 
 - The first success implementation is state-based rather than route-based.
-- A valid submit enters a short loading state before the success view is shown.
-- The mock submit path builds a submission snapshot from the current form values and adds a generated `submittedAt` timestamp.
-- The success view replaces the form in the same React tree after the mock async step completes.
-- The form data is not persisted beyond in-memory React state for this mock flow.
+- A valid submit enters a loading state before the Airtable request completes.
+- The browser builds a normalized submission snapshot from the current form values and generates an ISO `submittedAt` timestamp.
+- The frontend sends the mapped payload directly to Airtable from the browser.
+- The success view replaces the form in the same React tree only after Airtable reports success.
+- If Airtable submission fails, the form stays visible, the entered values remain intact, and a user-safe error message is shown.
+- The frontend-only implementation drops the Ruby server's local in-memory fallback behavior.
 
 ## Success State Behavior
 
@@ -44,3 +45,10 @@ The form now includes client-side validation behavior plus a state-based mock su
 - A summary view shows the submitted values for full name, email address, contact number, service type, preferred date, and submission timestamp.
 - The `Remarks` row is rendered only when remarks were provided.
 - The `Submit Another Application` action resets the mock success state and returns the user to a fresh form.
+
+## Failure Behavior
+
+- Failed submission does not clear the form.
+- Failed submission does not show raw Airtable responses, tokens, or request details.
+- The user sees a general failure message: `We couldn't submit your application right now. Please try again.`
+- Duplicate submissions are reduced by disabling the submit button while the request is in flight.

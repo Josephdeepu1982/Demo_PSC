@@ -64,6 +64,13 @@
 - A proxy or serverless submission function should eventually own the Airtable token and accept only the minimum validated payload from the browser.
 - That boundary would reduce credential exposure, support stronger rate limiting and abuse protection, and allow server-side validation or logging without exposing secrets to the client.
 
+## Phase 8 Review
+
+- The live form now submits through the Airtable helper instead of the local mock submission path.
+- Failed submissions show only a generic user-safe message and do not expose raw Airtable responses, headers, or token values in the UI.
+- Duplicate-submission risk is reduced by disabling submit while the request is in flight.
+- The frontend-only implementation intentionally drops the Ruby local fallback behavior rather than simulating persistence in the browser.
+
 ## Follow-Up Areas
 
 - Revisit secret handling before Airtable integration begins.
