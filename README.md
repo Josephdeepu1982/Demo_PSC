@@ -42,6 +42,11 @@ npm run test
 - Use `.env.example` as the committed placeholder template.
 - Keep deployment values in the hosting platform's environment settings.
 - Do not commit real Airtable credentials or other secrets.
+- Airtable browser integration expects:
+  - `VITE_AIRTABLE_TOKEN`
+  - `VITE_AIRTABLE_BASE_ID`
+  - `VITE_AIRTABLE_TABLE_NAME`
+- Because `VITE_` variables are exposed to the client bundle, direct browser-to-Airtable should be treated as a temporary or constrained solution rather than a hardened production boundary.
 
 ## Key Documentation
 
@@ -49,4 +54,5 @@ npm run test
 - `Docs/prd/project-requirements.md`: detailed product and technical requirements
 - `Docs/prd/implementation-assumptions.md`: confirmed constraints, source references, and open decisions
 - `docs/architecture.md`: current scaffold structure and intended code organization
+- `docs/airtable-mapping.md`: Airtable field mapping and payload shape
 - `docs/security.md`: current security posture and known limitations

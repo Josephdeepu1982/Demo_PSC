@@ -106,20 +106,20 @@
   - [x] confirm mock submission paths do not accidentally call real services
 
 ## Phase 7: Airtable Integration Foundations
-- [ ] Document the current Airtable field mapping in `docs/airtable-mapping.md`.
-- [ ] Add configuration handling for Airtable values using environment variables.
-- [ ] Define the frontend submission payload shape.
-- [ ] Create a small Airtable submission helper.
-- [ ] Add timestamp generation compatible with Airtable.
-- [ ] Add minimal request error handling.
-- [ ] Add minimal response parsing.
-- [ ] Document the direct browser-to-Airtable approach and its risks in `docs/security.md`.
-- [ ] Document a future safer alternative such as a proxy or serverless function.
-- [ ] Perform a security review:
-  - [ ] confirm secrets are not hardcoded
-  - [ ] confirm only required Airtable values are configurable
-  - [ ] confirm environment usage is documented clearly
-  - [ ] confirm the project acknowledges browser exposure risk
+- [x] Document the current Airtable field mapping in `docs/airtable-mapping.md`.
+- [x] Add configuration handling for Airtable values using environment variables.
+- [x] Define the frontend submission payload shape.
+- [x] Create a small Airtable submission helper.
+- [x] Add timestamp generation compatible with Airtable.
+- [x] Add minimal request error handling.
+- [x] Add minimal response parsing.
+- [x] Document the direct browser-to-Airtable approach and its risks in `docs/security.md`.
+- [x] Document a future safer alternative such as a proxy or serverless function.
+- [x] Perform a security review:
+  - [x] confirm secrets are not hardcoded
+  - [x] confirm only required Airtable values are configurable
+  - [x] confirm environment usage is documented clearly
+  - [x] confirm the project acknowledges browser exposure risk
 
 ## Phase 8: Real Submission
 - [ ] Replace the mock submit handler with the real Airtable submission flow.
