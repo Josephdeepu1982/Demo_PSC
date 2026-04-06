@@ -36,6 +36,15 @@ Current automated tests verify:
 
 Later work should extend coverage to:
 
-- Airtable payload shaping
 - real submission success and failure rendering
 - any retry, fallback, or integration-specific error handling introduced later
+
+## Airtable Foundation Coverage
+
+The current Airtable foundation phase should cover:
+
+- env-based Airtable configuration reads
+- payload mapping from frontend field names to Airtable field names
+- ISO timestamp generation for `Submitted At`
+- minimal response parsing for create-record responses
+- minimal request failure handling with user-safe error messages

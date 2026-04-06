@@ -45,6 +45,25 @@
 - The mock success state does not write submission data to local storage, session storage, cookies, or URL parameters.
 - The mock submission helper contains no API endpoints, credentials, tokens, or environment-derived configuration.
 
+## Phase 7 Review
+
+- Airtable configuration now reads only the required values from environment variables: token, base ID, and table name.
+- No Airtable secrets are hardcoded in committed source files. Real credentials belong only in local `.env.local` or deployment-managed environment settings.
+- The direct browser-to-Airtable approach is explicitly acknowledged as a risk because the token and request shape are inspectable in client-side traffic.
+- The current helper returns minimal user-safe errors and avoids exposing raw headers, tokens, or full request details to the UI.
+
+## Direct Browser-To-Airtable Risks
+
+- Any Airtable token used in a React client build is exposed to the browser at runtime.
+- Users can inspect network requests, endpoints, and Airtable field names from developer tools.
+- Public write-capable tokens increase the risk of abuse, spam, and unauthorized submissions.
+- Frontend-only validation does not protect Airtable from intentionally crafted requests.
+
+## Future Safer Alternative
+
+- A proxy or serverless submission function should eventually own the Airtable token and accept only the minimum validated payload from the browser.
+- That boundary would reduce credential exposure, support stronger rate limiting and abuse protection, and allow server-side validation or logging without exposing secrets to the client.
+
 ## Follow-Up Areas
 
 - Revisit secret handling before Airtable integration begins.

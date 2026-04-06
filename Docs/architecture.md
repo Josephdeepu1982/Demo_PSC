@@ -13,6 +13,9 @@ The current implementation includes local form state, shared validation helpers,
     - `MockSubmissionSuccess.jsx`: success-state summary view for the mock submission path
   - `submission/`
     - `mockSubmission.js`: mock async submission helper and submission snapshot builder
+    - `submissionData.js`: normalized submission shape and Airtable-compatible timestamp generation
+    - `airtableConfig.js`: env-based Airtable configuration reader
+    - `airtableSubmission.js`: Airtable payload mapping, request helper, and response parsing
   - `main.jsx`: React entry point
   - `test/`: shared test setup for interactive UI checks
 - `docs/`
