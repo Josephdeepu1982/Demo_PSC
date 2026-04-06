@@ -2,7 +2,7 @@
 
 ## Current Scope
 
-The form now includes client-side validation behavior, real browser-side Airtable submission, and a state-based success state in the React SPA.
+The app now includes client-side validation behavior, real browser-side Airtable submission, a state-based success state in the React SPA, and a Ruby-style `/submissions` route.
 
 ## Validation Timing Model
 
@@ -24,7 +24,6 @@ The form now includes client-side validation behavior, real browser-side Airtabl
 ## Current Non-Goals
 
 - No route-based success page exists yet.
-- No local fallback store exists when Airtable submission fails.
 - No retry flow exists yet after a failed submission attempt.
 
 ## Submission Flow
@@ -35,7 +34,8 @@ The form now includes client-side validation behavior, real browser-side Airtabl
 - The frontend sends the mapped payload directly to Airtable from the browser.
 - The success view replaces the form in the same React tree only after Airtable reports success.
 - If Airtable submission fails, the form stays visible, the entered values remain intact, and a user-safe error message is shown.
-- The frontend-only implementation drops the Ruby server's local in-memory fallback behavior.
+- Successful submissions are cached in the current browser session so the `/submissions` page can show a local fallback list when Airtable reads fail.
+- The frontend-only implementation still does not reproduce the Ruby server's shared in-memory fallback behavior across users or browser sessions.
 
 ## Success State Behavior
 
@@ -51,3 +51,10 @@ The form now includes client-side validation behavior, real browser-side Airtabl
 - Failed submission does not show raw Airtable responses, tokens, or request details.
 - The user sees a general failure message: `We couldn't submit your application right now. Please try again.`
 - Duplicate submissions are reduced by disabling the submit button while the request is in flight.
+
+## Submissions Route Behavior
+
+- `/submissions` fetches records directly from Airtable using the same env-based configuration as the write path.
+- The list is sorted newest first using the `Submitted At` field.
+- Each list row shows the full name plus `service type · email · preferred date`, matching the Ruby list page.
+- If Airtable reads fail, the route falls back to session-cached submissions, labels the source as local, and shows a warning message.

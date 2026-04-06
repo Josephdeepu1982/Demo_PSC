@@ -58,6 +58,7 @@
 - Users can inspect network requests, endpoints, and Airtable field names from developer tools.
 - Public write-capable tokens increase the risk of abuse, spam, and unauthorized submissions.
 - Frontend-only validation does not protect Airtable from intentionally crafted requests.
+- A public `/submissions` route with browser-side Airtable reads increases exposure further because the client can now read record lists containing names, emails, service types, and preferred dates.
 
 ## Future Safer Alternative
 
@@ -70,6 +71,13 @@
 - Failed submissions show only a generic user-safe message and do not expose raw Airtable responses, headers, or token values in the UI.
 - Duplicate-submission risk is reduced by disabling submit while the request is in flight.
 - The frontend-only implementation intentionally drops the Ruby local fallback behavior rather than simulating persistence in the browser.
+
+## Submissions Route Review
+
+- The React app now includes a public `/submissions` route that reads Airtable records directly from the browser with the same env-based token configuration used for form submission.
+- The submissions page mirrors the Ruby list view closely, but this parity choice intentionally exposes read access to submission data in the client and should not be treated as a hardened production pattern.
+- A session-only fallback cache now stores successful submissions in the current browser session so the submissions page can show a local fallback state when Airtable reads fail.
+- The session fallback is not equivalent to the Ruby server-side in-memory fallback because it is limited to the current browser session rather than shared application memory.
 
 ## Follow-Up Areas
 
