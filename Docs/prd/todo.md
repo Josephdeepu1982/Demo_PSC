@@ -85,25 +85,25 @@
 - [x] On submit, mark all fields as touched.
 - [x] Focus the first invalid field on failed submit.
 - [x] Verify the remarks counter still behaves correctly.
-- [ ] Update `docs/form-behavior.md` with the validation timing model.
-- [ ] Update `docs/testing.md` with the intended validation test coverage.
+- [x] Update `docs/form-behavior.md` with the validation timing model.
+- [x] Update `docs/testing.md` with the intended validation test coverage.
 - [x] Perform a security review:
   - [x] confirm invalid states cannot accidentally trigger submission handlers
   - [x] confirm error messages do not expose sensitive implementation details
 
 ## Phase 6: Success State With Mock Submission
-- [ ] Create a mock submit handler with no Airtable integration yet.
-- [ ] Add a loading state for the submit action.
-- [ ] Create the basic success view.
-- [ ] Show the submitter name in the success message.
-- [ ] Show a summary of submitted values.
-- [ ] Hide the remarks row when no remarks were entered.
-- [ ] Add a way to submit another application.
-- [ ] Decide whether success will be route-based or state-based for the first implementation.
-- [ ] Document the success-state behavior in `docs/form-behavior.md`.
-- [ ] Perform a security review:
-  - [ ] confirm no sensitive submission data is persisted unnecessarily in the browser
-  - [ ] confirm mock submission paths do not accidentally call real services
+- [x] Create a mock submit handler with no Airtable integration yet.
+- [x] Add a loading state for the submit action.
+- [x] Create the basic success view.
+- [x] Show the submitter name in the success message.
+- [x] Show a summary of submitted values.
+- [x] Hide the remarks row when no remarks were entered.
+- [x] Add a way to submit another application.
+- [x] Decide whether success will be route-based or state-based for the first implementation.
+- [x] Document the success-state behavior in `docs/form-behavior.md`.
+- [x] Perform a security review:
+  - [x] confirm no sensitive submission data is persisted unnecessarily in the browser
+  - [x] confirm mock submission paths do not accidentally call real services
 
 ## Phase 7: Airtable Integration Foundations
 - [ ] Document the current Airtable field mapping in `docs/airtable-mapping.md`.

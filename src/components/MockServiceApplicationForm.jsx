@@ -1,6 +1,8 @@
 import { useMemo, useRef, useState } from 'react'
+import MockSubmissionSuccess from './MockSubmissionSuccess.jsx'
 import { serviceTypeOptions } from '../constants/serviceTypeOptions.js'
 import { remarksMaxLength } from '../constants/validationRules.js'
+import { mockSubmitApplication } from '../submission/mockSubmission.js'
 import {
   formFieldNames,
   initialFormValues,
@@ -17,6 +19,8 @@ function createTouchedState(isTouched = false) {
 function MockServiceApplicationForm() {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [touchedFields, setTouchedFields] = useState(createTouchedState)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submittedValues, setSubmittedValues] = useState(null)
   const fieldRefs = useRef({})
 
   const validationErrors = useMemo(() => validateForm(formValues), [formValues])
@@ -61,7 +65,7 @@ function MockServiceApplicationForm() {
     markFieldTouched(event.target.name)
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     setTouchedFields(createTouchedState(true))
@@ -72,7 +76,24 @@ function MockServiceApplicationForm() {
 
     if (firstInvalidFieldName) {
       fieldRefs.current[firstInvalidFieldName]?.focus()
+      return
     }
+
+    setIsSubmitting(true)
+
+    try {
+      const mockSubmission = await mockSubmitApplication(formValues)
+      setSubmittedValues(mockSubmission)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleSubmitAnother = () => {
+    setFormValues(initialFormValues)
+    setTouchedFields(createTouchedState())
+    setSubmittedValues(null)
+    setIsSubmitting(false)
   }
 
   const previewItems = [
@@ -95,6 +116,15 @@ function MockServiceApplicationForm() {
       value: formValues.remarks || 'No remarks entered yet',
     },
   ]
+
+  if (submittedValues) {
+    return (
+      <MockSubmissionSuccess
+        submission={submittedValues}
+        onSubmitAnother={handleSubmitAnother}
+      />
+    )
+  }
 
   return (
     <div className="mockFormLayout">
@@ -256,8 +286,12 @@ function MockServiceApplicationForm() {
           ) : null}
         </div>
 
-        <button type="submit" className="submitButton" disabled={!isFormValid}>
-          Submit Application
+        <button
+          type="submit"
+          className="submitButton"
+          disabled={!isFormValid || isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit Application'}
         </button>
       </form>
 
