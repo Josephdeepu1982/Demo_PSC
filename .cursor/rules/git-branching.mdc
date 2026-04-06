@@ -1,0 +1,29 @@
+---
+description: Git commit, branch, and PR naming conventions
+alwaysApply: true
+---
+
+# Git And Branching Rules
+
+- Use commit messages in the format `type(scope): description`.
+- Write commit descriptions in lowercase and make them specific to the change.
+- Use branch names in the format `type/short-description`.
+- Use short, hyphenated branch descriptions such as `feat/add-to-cart-button`.
+- Use PR titles in the same format as commit messages: `type(scope): description`.
+- Keep the `type` consistent across branch, commit, and PR when possible.
+
+Examples:
+
+```text
+Commit: feat(cart): add add-to-cart button
+Branch: feat/add-to-cart-button
+PR: feat(cart): add add-to-cart button
+```
+
+Common `type` values:
+- `feat`
+- `fix`
+- `chore`
+- `docs`
+- `refactor`
+- `test`

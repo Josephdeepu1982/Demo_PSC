@@ -1,0 +1,24 @@
+---
+description: Core code style and naming conventions
+alwaysApply: true
+---
+
+# Code Style Rules
+
+- Use `camelCase` for variables, functions, and object properties.
+- Use `PascalCase` for components, classes, and type-like names.
+- Use descriptive names that explain intent. Avoid single-letter variables except for conventional short cases such as loop indices.
+- Keep files focused on one main responsibility when practical.
+- Prefer a clear file structure: imports, constants, types, main logic, then exports.
+- Keep formatting consistent with the project's existing style and avoid mixed patterns in the same file.
+- Favor small, readable functions over dense, clever code.
+
+Example:
+
+```ts
+// Avoid
+const x = userList.filter((u) => u.isActive);
+
+// Prefer
+const activeUsers = userList.filter((user) => user.isActive);
+```

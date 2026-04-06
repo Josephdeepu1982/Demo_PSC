@@ -1,0 +1,28 @@
+---
+description: Form validation standards for service application workflows
+alwaysApply: false
+---
+# Form Validation
+
+- Validate required fields on submit before calling any submission handler.
+- Show a clear inline error message directly below the field that failed validation.
+- Preserve all entered values when validation fails. Do not clear or reset form state on error.
+- Always validate these fields: `full_name`, `email`, `contact_number`, `service_type`, and `preferred_date`.
+- Keep validation logic out of the rendering component when practical. Prefer focused field helpers plus one whole-form validator.
+- Match the PRD-driven behavior: submit is blocked on validation failure, and the UI should keep the user on the form with actionable errors.
+
+```ts
+// validation/formValidation.ts
+export function validateFullName(value: string) {
+  return value.trim() ? '' : 'Full name is required.';
+}
+
+export function validateForm(values: FormValues) {
+  return {
+    full_name: validateFullName(values.full_name),
+    // ...other field validators
+  };
+}
+```
+
+- Components should render returned errors inline and keep the current field values intact after a failed submit.
