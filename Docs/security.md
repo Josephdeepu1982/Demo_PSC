@@ -38,6 +38,13 @@
 - Invalid client-side states keep the submit button disabled, and the form submit handler still blocks invalid submissions as a defensive fallback.
 - Error messages remain user-facing validation copy only and do not expose internal implementation details.
 
+## Phase 6 Review
+
+- The current submission path is a local mock only and does not call Airtable or any other external service.
+- Submitted values are held only in in-memory React state for the active session so the success view can render a summary.
+- The mock success state does not write submission data to local storage, session storage, cookies, or URL parameters.
+- The mock submission helper contains no API endpoints, credentials, tokens, or environment-derived configuration.
+
 ## Follow-Up Areas
 
 - Revisit secret handling before Airtable integration begins.

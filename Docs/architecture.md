@@ -2,14 +2,17 @@
 
 ## Current Phase
 
-Phase 3 introduces local form state while keeping the implementation submission-free and easy to reason about.
+The current implementation includes local form state, shared validation helpers, and a state-based mock submission success flow.
 
 ## Intended Folder Structure
 
 - `src/`
   - `App.jsx`: page shell for the current form experience
   - `components/`
-    - `MockServiceApplicationForm.jsx`: controlled mock form and local preview panel
+    - `MockServiceApplicationForm.jsx`: controlled form, validation flow, and mock success-state switch
+    - `MockSubmissionSuccess.jsx`: success-state summary view for the mock submission path
+  - `submission/`
+    - `mockSubmission.js`: mock async submission helper and submission snapshot builder
   - `main.jsx`: React entry point
   - `test/`: shared test setup for interactive UI checks
 - `docs/`
@@ -27,7 +30,7 @@ Phase 3 introduces local form state while keeping the implementation submission-
 
 ## Field State Model
 
-The mock form currently uses one local state object with these keys:
+The form currently uses one local state object with these keys:
 
 - `fullName`
 - `email`
@@ -36,4 +39,4 @@ The mock form currently uses one local state object with these keys:
 - `preferredDate`
 - `remarks`
 
-Each input is controlled by React state and updates through a shared change handler. The preview panel reflects the current local state for development only and does not introduce any submission behavior.
+Each input is controlled by React state and updates through a shared change handler. Additional local state tracks touched fields, mock submission loading, and whether a submitted snapshot should render the success state. The preview panel reflects the current local state only while the form view is active.
