@@ -2,22 +2,38 @@
 
 ## Current Phase
 
-Phase 1 establishes a minimal Vite React SPA so the form rebuild can proceed in small, reviewable increments.
+Phase 3 introduces local form state while keeping the implementation submission-free and easy to reason about.
 
 ## Intended Folder Structure
 
 - `src/`
-  - `App.jsx`: temporary bootstrap page for initial app verification
+  - `App.jsx`: page shell for the current form experience
+  - `components/`
+    - `MockServiceApplicationForm.jsx`: controlled mock form and local preview panel
   - `main.jsx`: React entry point
-  - `test/`: shared test setup
+  - `test/`: shared test setup for interactive UI checks
 - `docs/`
   - project-level implementation notes, architecture notes, and security posture docs
 - `Docs/prd/`
   - product requirements, checklist, and implementation assumptions
 
-## Initial Architecture Direction
+## Current Component Structure
 
 - Use a React SPA built with Vite.
-- Keep state local until the form complexity proves a larger pattern is necessary.
+- Keep page-level layout in `App.jsx`.
+- Keep form rendering and local form state together in `MockServiceApplicationForm.jsx` until validation logic is introduced.
 - Separate UI, validation, constants, and submission logic as the form grows.
 - Add folders only when they support clearer ownership and testability.
+
+## Field State Model
+
+The mock form currently uses one local state object with these keys:
+
+- `fullName`
+- `email`
+- `contactNumber`
+- `serviceType`
+- `preferredDate`
+- `remarks`
+
+Each input is controlled by React state and updates through a shared change handler. The preview panel reflects the current local state for development only and does not introduce any submission behavior.

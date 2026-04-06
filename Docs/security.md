@@ -24,6 +24,13 @@
 - The static shell makes no network calls.
 - No debug data, console output, or internal configuration is exposed in the page markup.
 
+## Phase 3 Review
+
+- Form data is kept in local React state only.
+- No form values are logged to the console by default.
+- No sensitive example values were added to docs, tests, or UI copy.
+- The preview panel is local-only and does not submit or transmit data.
+
 ## Follow-Up Areas
 
 - Revisit secret handling before Airtable integration begins.
